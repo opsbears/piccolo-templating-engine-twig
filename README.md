@@ -1,6 +1,7 @@
 # Twig module for Piccolo Templating [![Build Status](https://travis-ci.org/opsbears/piccolo-templating-engine-twig.svg?branch=master)](https://travis-ci.org/opsbears/piccolo-templating-engine-twig)
 
-This module provides templating for Piccolo using the [Twig template engine](http://twig.sensiolabs.org/).
+This module provides [templating](https://github.com/opsbears/piccolo-templating) for Piccolo using the
+[Twig template engine](http://twig.sensiolabs.org/).
 
 ## Installation
 
