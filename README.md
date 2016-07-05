@@ -17,7 +17,8 @@ There are two ways of using this template engine.
 ## Using Twig directly
 
 The `TwigTemplateEngine` class implements the `TemplateEngine` interface, so you can use it directly by registering 
-it in your dependency injection container as an alias. You can then use it to render a template:
+it in your dependency injection container as an alias. (This is done automatically if you load the 
+`TwigTemplatingModule`.) You can then use it to render a template:
 
 ```
 function myFunction(TemplateEngine $tpl) {
