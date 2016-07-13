@@ -2,6 +2,7 @@
 
 namespace Piccolo\Templating\Engine\Twig;
 
+use Piccolo\Dev\DependencyInjectionContainerMock;
 use Piccolo\Templating\TemplateEngine;
 use Piccolo\Templating\TemplatingModule;
 
