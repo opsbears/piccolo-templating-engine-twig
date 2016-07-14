@@ -11,6 +11,8 @@ use Twig_Loader_Filesystem;
  * This class is a template engine provider that utilizes the Twig template engine to render templates.
  *
  * @see http://twig.sensiolabs.org/
+ *
+ * @package Templating
  */
 class TwigTemplateEngine implements TemplateEngine {
 	/**
@@ -28,6 +30,6 @@ class TwigTemplateEngine implements TemplateEngine {
 		$twig = new Twig_Environment($loader, array('debug' => true));
 		$twig->addExtension(new Twig_Extension_Debug());
 
-		return $twig->render(str_replace(realpath($templateRoot), '', realpath($fileName)), $data);
+		return $twig->render(\str_replace(\realpath($templateRoot), '', \realpath($fileName)), $data);
 	}
 }

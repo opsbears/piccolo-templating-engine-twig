@@ -15,7 +15,8 @@
 		"opsbears/piccolo-templating-engine": "1.0.0"
 	},
 	"require": {
-		"opsbears/piccolo": "dev-master",
+		"php": "^7.0",
+
 		"opsbears/piccolo-templating": "dev-master",
 		"twig/twig": "^1.24"
 	},

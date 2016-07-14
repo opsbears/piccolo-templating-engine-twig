@@ -12,6 +12,8 @@ use Piccolo\Templating\TemplatingModule;
  * This can be used by invoking the `TemplateRenderingChain` class.
  *
  * @see https://github.com/opsbears/piccolo-templating
+ *
+ * @package Templating
  */
 class TwigTemplatingModule extends AbstractModule {
 	/**
