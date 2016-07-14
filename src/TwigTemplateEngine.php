@@ -26,8 +26,8 @@ class TwigTemplateEngine implements TemplateEngine {
 	 * {@inheritdoc}
 	 */
 	public function renderFile(string $templateRoot, string $fileName, array $data) : string {
-		$loader = new Twig_Loader_Filesystem(realpath($templateRoot));
-		$twig = new Twig_Environment($loader, array('debug' => true));
+		$loader = new Twig_Loader_Filesystem(\realpath($templateRoot));
+		$twig   = new Twig_Environment($loader, ['debug' => true]);
 		$twig->addExtension(new Twig_Extension_Debug());
 
 		return $twig->render(\str_replace(\realpath($templateRoot), '', \realpath($fileName)), $data);
