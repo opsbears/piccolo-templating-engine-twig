@@ -17,11 +17,11 @@
 	"require": {
 		"php": "^7.0",
 
-		"opsbears/piccolo-templating": "dev-master",
+		"opsbears/piccolo-templating": "^1.0",
 		"twig/twig": "^1.24"
 	},
 	"require-dev": {
-		"opsbears/piccolo-dev-tools": "dev-master"
+		"opsbears/piccolo-dev-tools": "^1.0"
 	},
 	"minimum-stability": "dev"
 }
