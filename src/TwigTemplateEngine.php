@@ -16,6 +16,15 @@ use Twig_Loader_Filesystem;
  */
 class TwigTemplateEngine implements TemplateEngine {
 	/**
+	 * @var bool
+	 */
+	private $debug;
+
+	public function __construct(bool $debug) {
+		$this->debug = $debug;
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function getExtension() : string {
@@ -27,8 +36,10 @@ class TwigTemplateEngine implements TemplateEngine {
 	 */
 	public function renderFile(string $templateRoot, string $fileName, array $data) : string {
 		$loader = new Twig_Loader_Filesystem(\realpath($templateRoot));
-		$twig   = new Twig_Environment($loader, ['debug' => true]);
+		$twig   = new Twig_Environment($loader, ['debug' => $this->debug]);
 		$twig->addExtension(new Twig_Extension_Debug());
+
+		$data['twig'] = ['debug' => $this->debug];
 
 		return $twig->render(\str_replace(\realpath($templateRoot), '', \realpath($fileName)), $data);
 	}

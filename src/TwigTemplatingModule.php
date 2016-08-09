@@ -27,9 +27,7 @@ class TwigTemplatingModule extends AbstractModule {
 	 * {@inheritdoc}
 	 */
 	public function getRequiredModules() : array {
-		return [
-			TemplatingModule::class
-		];
+		return [];
 	}
 
 	/**
@@ -37,7 +35,9 @@ class TwigTemplatingModule extends AbstractModule {
 	 */
 	public function loadConfiguration(array &$moduleConfig, array &$globalConfig) {
 		parent::loadConfiguration($moduleConfig, $globalConfig);
-
+		if (!isset($globalConfig['templating']['engines'])) {
+			$globalConfig['templating']['engines'] = [];
+		}
 		$globalConfig['templating']['engines'][] = TwigTemplateEngine::class;
 	}
 
@@ -47,5 +47,10 @@ class TwigTemplatingModule extends AbstractModule {
 	public function configureDependencyInjection(DependencyInjectionContainer $dic, array $moduleConfig,
 												 array $globalConfig) {
 		$dic->alias(TemplateEngine::class, TwigTemplateEngine::class);
+
+		if (!isset($moduleConfig['debug'])) {
+			$moduleConfig['debug'] = false;
+		}
+		$dic->setClassParameters(TwigTemplateEngine::class, ['debug' => $moduleConfig['debug']]);
 	}
 }
