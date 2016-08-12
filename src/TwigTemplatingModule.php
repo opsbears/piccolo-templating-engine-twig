@@ -16,6 +16,8 @@ use Piccolo\Templating\TemplatingModule;
  * @package Templating
  */
 class TwigTemplatingModule extends AbstractModule {
+	const CONFIG_DEBUG = 'debug';
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -26,19 +28,21 @@ class TwigTemplatingModule extends AbstractModule {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getRequiredModules() : array {
-		return [];
+	public function getModulesAfter() : array {
+		return [
+			TemplatingModule::class
+		];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function loadConfiguration(array &$moduleConfig, array &$globalConfig) {
-		parent::loadConfiguration($moduleConfig, $globalConfig);
-		if (!isset($globalConfig['templating']['engines'])) {
-			$globalConfig['templating']['engines'] = [];
-		}
-		$globalConfig['templating']['engines'][] = TwigTemplateEngine::class;
+		/**
+		 * @var TemplatingModule $templateModule
+		 */
+		$templateModule = $this->getRequiredModule(TemplatingModule::class);
+		$templateModule->addTemplatingEngineClass($globalConfig, TwigTemplateEngine::class);
 	}
 
 	/**
@@ -48,9 +52,9 @@ class TwigTemplatingModule extends AbstractModule {
 												 array $globalConfig) {
 		$dic->alias(TemplateEngine::class, TwigTemplateEngine::class);
 
-		if (!isset($moduleConfig['debug'])) {
-			$moduleConfig['debug'] = false;
+		if (!isset($moduleConfig[self::CONFIG_DEBUG])) {
+			$moduleConfig[self::CONFIG_DEBUG] = false;
 		}
-		$dic->setClassParameters(TwigTemplateEngine::class, ['debug' => $moduleConfig['debug']]);
+		$dic->setClassParameters(TwigTemplateEngine::class, ['debug' => $moduleConfig[self::CONFIG_DEBUG]]);
 	}
 }

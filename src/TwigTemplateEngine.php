@@ -20,6 +20,9 @@ class TwigTemplateEngine implements TemplateEngine {
 	 */
 	private $debug;
 
+	/**
+	 * @param bool $debug
+	 */
 	public function __construct(bool $debug) {
 		$this->debug = $debug;
 	}
