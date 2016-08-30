@@ -27,7 +27,6 @@ class TwigTemplateEngine implements TemplateEngine {
 	private $debug;
 
 	/**
-<<<<<<< HEAD
 	 * @var TemplateFilter[]
 	 */
 	private $filters = [];
@@ -37,10 +36,9 @@ class TwigTemplateEngine implements TemplateEngine {
 	 */
 	private $functions = [];
 
-=======
+	/**
 	 * @param bool $debug
 	 */
->>>>>>> 0eebbbd020bd54719b4048827f968e9ff89db16e
 	public function __construct(bool $debug) {
 		$this->debug = $debug;
 	}
