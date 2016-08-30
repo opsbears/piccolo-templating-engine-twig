@@ -16,6 +16,8 @@ use Piccolo\Templating\TemplatingModule;
  * @package Templating
  */
 class TwigTemplatingModule extends AbstractModule {
+	const CONFIG_DEBUG = 'debug';
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -50,9 +52,9 @@ class TwigTemplatingModule extends AbstractModule {
 												 array $globalConfig) {
 		$dic->alias(TemplateEngine::class, TwigTemplateEngine::class);
 
-		if (!isset($moduleConfig['debug'])) {
-			$moduleConfig['debug'] = false;
+		if (!isset($moduleConfig[self::CONFIG_DEBUG])) {
+			$moduleConfig[self::CONFIG_DEBUG] = false;
 		}
-		$dic->setClassParameters(TwigTemplateEngine::class, ['debug' => $moduleConfig['debug']]);
+		$dic->setClassParameters(TwigTemplateEngine::class, ['debug' => $moduleConfig[self::CONFIG_DEBUG]]);
 	}
 }
