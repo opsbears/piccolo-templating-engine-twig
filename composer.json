@@ -11,6 +11,9 @@
 			"Piccolo\\Templating\\Engine\\Twig\\": "./tests"
 		}
 	},
+	"suggest": {
+		"ext-intl": "Internationalization support for Twig"
+	},
 	"provide": {
 		"opsbears/piccolo-templating-engine": "1.0.0"
 	},
@@ -18,7 +21,8 @@
 		"php": "^7.0",
 
 		"opsbears/piccolo-templating": "^1.0",
-		"twig/twig": "^1.24"
+		"twig/twig": "^1.24",
+		"twig/extensions": "^1.3"
 	},
 	"require-dev": {
 		"opsbears/piccolo-dev-tools": "^1.0"

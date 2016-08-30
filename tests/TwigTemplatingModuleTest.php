@@ -38,12 +38,12 @@ class TwigTemplatingModuleTest extends \PHPUnit_Framework_TestCase {
 	public function testLoadConfiguration() {
 		//setup
 		$module = new TwigTemplatingModule();
+		$templatingModule = new TemplatingModule();
 		$globalConfiguration = [
-			'templating' => [
-				'engines' => [],
-			],
 			$module->getModuleKey() => [],
+			$templatingModule->getModuleKey() => [],
 		];
+		$module->addRequiredModule($templatingModule);
 		//act
 		$module->loadConfiguration($globalConfiguration[$module->getModuleKey()], $globalConfiguration);
 		//assert
@@ -56,13 +56,14 @@ class TwigTemplatingModuleTest extends \PHPUnit_Framework_TestCase {
 	public function testConfigureDependencyInjection() {
 		//setup
 		$module = new TwigTemplatingModule();
+		$templatingModule = new TemplatingModule();
 		$dic    = new DependencyInjectionContainerMock();
 		$globalConfiguration = [
-			'templating' => [
-				'engines' => [TwigTemplateEngine::class],
-			],
 			$module->getModuleKey() => [],
+			$templatingModule->getModuleKey() => [],
 		];
+		$module->addRequiredModule($templatingModule);
+
 		//act
 		$module->configureDependencyInjection(
 			$dic,

@@ -11,7 +11,7 @@ class TwigTemplateEngineTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testExtension() {
 		//setup
-		$engine = new TwigTemplateEngine();
+		$engine = new TwigTemplateEngine(false);
 		//act
 		//assert
 		$this->assertEquals('twig', $engine->getExtension());
@@ -22,7 +22,7 @@ class TwigTemplateEngineTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testRender() {
 		//setup
-		$engine = new TwigTemplateEngine();
+		$engine = new TwigTemplateEngine(false);
 		//act
 		$content = $engine->renderFile(
 			__DIR__ . '/../testdata',

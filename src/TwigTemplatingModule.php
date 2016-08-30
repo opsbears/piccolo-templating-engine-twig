@@ -26,19 +26,21 @@ class TwigTemplatingModule extends AbstractModule {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getRequiredModules() : array {
-		return [];
+	public function getModulesAfter() : array {
+		return [
+			TemplatingModule::class
+		];
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
 	public function loadConfiguration(array &$moduleConfig, array &$globalConfig) {
-		parent::loadConfiguration($moduleConfig, $globalConfig);
-		if (!isset($globalConfig['templating']['engines'])) {
-			$globalConfig['templating']['engines'] = [];
-		}
-		$globalConfig['templating']['engines'][] = TwigTemplateEngine::class;
+		/**
+		 * @var TemplatingModule $templatingModule
+		 */
+		$templatingModule = $this->getRequiredModule(TemplatingModule::class);
+		$templatingModule->addTemplatingEngineClass($globalConfig, TwigTemplateEngine::class);
 	}
 
 	/**
